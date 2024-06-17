@@ -6,10 +6,16 @@
 git clone https://openbeagle.org/aryan_nanda/gsoc_2024-enhanced_media_experience_with_ai-powered_commercial_detection_and_replacement.git
 ```
 
-- Move to the cloned folder:
+- Move to the cloned repo:
 
 ```bash
-cd ~/gsoc_2024-enhanced_media_experience_with_ai-powered_commercial_detection_and_replacement
+cd ~/gsoc_2024-enhanced_media_experience_with_ai-powered_commercial_detection_and_replacement/
+```
+
+- Move to the dataset folder:
+
+```bash
+cd datasetCollection_And_featureExtraction/yt8m
 ```
 
 - In order to run the Yt8m dataset .ipynb files, first create a conda environment with necessary dependencies:
@@ -24,7 +30,7 @@ conda env create -f environment.yaml
 conda activate model
 ```
 
-- To download 1/100-th of the training data from the US use:
+- Now, Download 1/100-th of the training data from the US:
 
 ```bash
 curl data.yt8m.org/download.py | shard=1,100 partition=2/frame/train mirror=us python
