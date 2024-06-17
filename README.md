@@ -85,8 +85,6 @@ In the project, I will create a GStreamer Plugin that will receive input from an
 - It offers valuable insights into deploying neural network models in resource-constrained environments, creating custom GStreamer plugins for multimedia processing, and applying machine learning in real-world scenarios to enhance digital media experiences.
 - Moreover, it enhances the viewing experience by automatically detecting and replacing commercials with preferred content, ensuring uninterrupted entertainment.
 
-Thank you for reading the complete blog!!
-
 ##### To Explore more about the project refer the following Links:
 
 - Youtube Video **[Link](https://www.youtube.com/watch?v=Kagg8JycOfo)**
