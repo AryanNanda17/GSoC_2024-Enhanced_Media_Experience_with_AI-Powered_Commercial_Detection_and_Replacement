@@ -11,6 +11,7 @@ For instance:
 <center>
 <img src="./assets/scary.png" width="500px"/>
 </center>
+
 - Also, Certain advertisements may contain content that is disturbing or unsuitable for all audiences, especially when watching with children.
 
 By developing a system that detects and replaces commercials in real-time, this project aims to ensure that viewers can enjoy a seamless and pleasant viewing experience, tailored to their preferences. Also it will serve as an educational resource on integrating AI and machine learning capabilities into embedded systems.
