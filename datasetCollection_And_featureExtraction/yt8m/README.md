@@ -30,7 +30,14 @@ conda env create -f environment.yaml
 conda activate model
 ```
 
-- Now, Download 1/100-th of the training data from the US:
+- Create a new folder for downloading dataset, the .ipynb files expect it to be at `2/frame/train`. (You can change it if you want.)
+
+```bash
+mkdir -p 2/frame/train
+cd 2/frame/train
+```
+
+- Now, Download 1/100-th of the training data from the US in the train folder:
 
 ```bash
 curl data.yt8m.org/download.py | shard=1,100 partition=2/frame/train mirror=us python
