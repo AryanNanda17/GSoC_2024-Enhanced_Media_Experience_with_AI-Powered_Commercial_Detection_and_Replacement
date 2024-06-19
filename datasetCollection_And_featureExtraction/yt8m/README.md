@@ -34,12 +34,20 @@ conda activate model
 
 ```bash
 mkdir -p 2/frame/train
-cd 2/frame/train
 ```
 
-- Now, Download 1/100-th of the training data from the US in the train folder:
+- Now, Download the vocabulary.csv from [here](https://research.google.com/youtube8m/csv/2/vocabulary.csv). (Vocabulary.csv is used to map video_id to its label name)
+
+- After downloading it, move it to the folder `2/frame/`.
+
+```
+mv ~/Downloads/vocabulary.csv ./2/frame/vocabulary.csv
+```
+
+- Now, Download 1/100-th of the training data from the US server in the `2/frame/train` folder:
 
 ```bash
+cd 2/frame/train
 curl data.yt8m.org/download.py | shard=1,100 partition=2/frame/train mirror=us python
 ```
 
