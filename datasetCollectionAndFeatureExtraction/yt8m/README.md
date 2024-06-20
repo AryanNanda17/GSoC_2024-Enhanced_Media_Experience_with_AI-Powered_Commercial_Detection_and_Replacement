@@ -30,27 +30,4 @@ conda env create -f environment.yaml
 conda activate model
 ```
 
-- Create a new folder for downloading dataset, the .ipynb files expect it to be at `2/frame/train`. (You can change it if you want.)
-
-```bash
-mkdir -p 2/frame/train
-```
-
-- Now, Download the vocabulary.csv from [here](https://research.google.com/youtube8m/csv/2/vocabulary.csv). (Vocabulary.csv is used to map video_id to its label name)
-
-- After downloading it, move it to the folder `2/frame/`.
-
-```
-mv ~/Downloads/vocabulary.csv ./2/frame/vocabulary.csv
-```
-
-- Now, Download 1/100-th of the training data from the US server in the `2/frame/train` folder:
-
-```bash
-cd 2/frame/train
-curl data.yt8m.org/download.py | shard=1,100 partition=2/frame/train mirror=us python
-```
-
-> If you are from Asia use mirror=asia instead of us.
-
 - Now, open the .ipynb and start running the cells.
