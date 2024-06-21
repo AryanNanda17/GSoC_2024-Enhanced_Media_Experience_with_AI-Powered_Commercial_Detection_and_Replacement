@@ -1,0 +1,70 @@
+#!/bin/bash
+
+set -e ; set -u
+
+source ci_env
+
+ENVFILE='environment.yaml'
+
+
+function process_notebook(){
+    local path="$1"
+
+    local filename="${path##*/}"
+    local folder="${path%/*}"
+    local basename="${filename%.*}"
+    local envfile=''
+    local envname=''
+    RED='\033[0;31m'
+    GREEN='\033[0;32m'
+    NC='\033[0m' # No Color    
+
+    for location in "$folder/../../.." "$folder/../.." "$folder/.." "$folder" ; do
+        [[ -f "$location/$ENVFILE" ]] && envfile=$location/$ENVFILE && envname=$(stat --format '%i' $location/$ENVFILE)
+    done
+
+    printf "=====================\n"
+    printf "Envfile:\t$envfile\n"
+    printf "Envname:\t$envname\n"
+    printf "Path:\t\t$path\n"
+    printf "Filename:\t${filename}\n"
+    printf "Folder:\t\t${folder}\n"
+    printf "Basename:\t${basename}\n"
+    printf "=====================\n"
+
+    # conda create
+    conda env update --prune --quiet --name $envname --file "$envfile"
+    convert_notebook "$envname" "$path"
+
+    printf "${GREEN}====> PASSED:${NC} $path\n"
+}
+
+function convert_notebook() {
+    (
+     # conda activate
+    set +u
+    source activate $1
+    set -u
+    # run notebook
+    jupyter nbconvert --to notebook --execute \
+    --ExecutePreprocessor.timeout=60 \
+    --output output.ipynb \
+    "$2" || {  printf "${RED}====> FAILED:${NC} $2\n" ; exit 99 ; }
+    )
+}
+
+if [ $# -eq 1 ]; then
+    process_notebook "$1"
+else
+    notebookcount=0
+    while read -d $'\0' path ; do
+        # if the noci flag was passed, dont look for a noci file
+        if [[ -f "${path%/*}/noci" ]] ; then
+            echo "===> noci found for ${path##*/}. skipping it."
+            continue
+        fi
+        process_notebook "$path"
+        let notebookcount=notebookcount+1
+    done < <(find . -name \*.ipynb -print0)
+    echo The notebook count is "$notebookcount"
+fi
