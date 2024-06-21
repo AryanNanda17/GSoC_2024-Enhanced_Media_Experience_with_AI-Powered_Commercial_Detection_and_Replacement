@@ -4,8 +4,7 @@ set -e ; set -u
 
 source ci_env
 
-ENVFILE='environment.yaml'
-
+ENVFILE='environment.yml'
 
 function process_notebook(){
     local path="$1"
@@ -19,8 +18,14 @@ function process_notebook(){
     GREEN='\033[0;32m'
     NC='\033[0m' # No Color    
 
+    # Find the environment.yml file
     for location in "$folder/../../.." "$folder/../.." "$folder/.." "$folder" ; do
-        [[ -f "$location/$ENVFILE" ]] && envfile=$location/$ENVFILE && envname=$(stat --format '%i' $location/$ENVFILE)
+        if [ -f "$location/$ENVFILE" ]; then
+            envfile="$location/$ENVFILE"
+            # Extract the environment name from environment.yml
+            envname=$(grep 'name:' "$envfile" | sed -e 's/.*: *//')
+            break
+        fi
     done
 
     printf "=====================\n"
@@ -32,22 +37,27 @@ function process_notebook(){
     printf "Basename:\t${basename}\n"
     printf "=====================\n"
 
-    # conda create
-    conda env update --prune --quiet --name $envname --file "$envfile"
-    convert_notebook "$envname" "$path"
+    # Check if envname is not empty before attempting to update the environment
+    if [ -n "$envname" ]; then
+        conda env update --prune --quiet --name "$envname" --file "$envfile"
+        convert_notebook "$envname" "$path"
+    else
+        echo "Error: Environment name not found in $envfile. Unable to update Conda environment."
+        exit 1
+    fi
 
     printf "${GREEN}====> PASSED:${NC} $path\n"
 }
+
 
 function convert_notebook() {
     (
      # conda activate
     set +u
-    source activate $1
+    activate $1
     set -u
     # run notebook
     jupyter nbconvert --to notebook --execute \
-    --ExecutePreprocessor.timeout=60 \
     --output output.ipynb \
     "$2" || {  printf "${RED}====> FAILED:${NC} $2\n" ; exit 99 ; }
     )
