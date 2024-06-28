@@ -1,9 +1,17 @@
 variables:
   GIT_DEPTH: "1"
 
-image: continuumio/miniconda3:latest
+image: continuumio/anaconda3:latest
+
+before_script:
+  - apt-get update
+  - apt-get install -y gcc python3
+  - apt-get install -y libhdf5-dev
+  - export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib:/usr/lib/x86_64-linux-gnu/hdf5/:$LD_LIBRARY_PATH
+  - source ~/.bashrc
 
 build_job:
   script:
+    - pip install h5py
     - chmod +x run_ci
     - source run_ci
