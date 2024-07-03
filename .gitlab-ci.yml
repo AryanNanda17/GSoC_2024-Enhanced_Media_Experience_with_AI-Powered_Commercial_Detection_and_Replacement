@@ -9,7 +9,7 @@ before_script:
 
 build_job:
   tags:
-    - docker-amd64-bigmem
+    - 2204-cuda-12.5
   script:
     - chmod +x run_ci
     - source run_ci
