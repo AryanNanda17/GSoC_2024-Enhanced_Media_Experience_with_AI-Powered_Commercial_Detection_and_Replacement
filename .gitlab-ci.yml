@@ -1,7 +1,7 @@
 variables:
   GIT_DEPTH: "1"
 
-image: continuumio/anaconda3:latest
+image: xychelsea/anaconda3:latest
 
 before_script:
   - apt-get update
