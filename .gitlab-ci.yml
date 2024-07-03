@@ -1,7 +1,7 @@
 variables:
   GIT_DEPTH: "1"
 
-image: docker pull nvidia/cuda
+image: docker pull nvidia/cuda:latest
 
 before_script:
   - apt-get update
