@@ -1,7 +1,7 @@
 variables:
   GIT_DEPTH: "1"
 
-image: nvidia/cuda:latest
+image: nvidia/cuda:12.5.0-devel-ubuntu22.04
 
 before_script:
   - apt-get update
