@@ -52,11 +52,20 @@ function process_notebook(){
 
 function convert_notebook() {
     (
-     # conda activate
+    # Activate Conda environment
     set +u
-    activate $1
+    source activate $1
     set -u
-    # run notebook
+
+    # Check GPU availability with TensorFlow
+    gpu_devices=$(python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))")
+    if [ -z "$gpu_devices" ]; then
+        echo "No GPU devices found."
+    else
+        echo "GPU devices found: $gpu_devices"
+    fi
+
+    # Run notebook
     jupyter nbconvert --to notebook --execute \
     --ExecutePreprocessor.timeout=1200 \
     --output output.ipynb \
