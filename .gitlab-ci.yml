@@ -12,6 +12,5 @@ build_job:
     - 2204-cuda-12.5
   script:
     - export TF_GPU_ALLOCATOR=cuda_malloc_async
-    - cd ci
     - chmod +x ./run_ci
     - source ./run_ci
