@@ -1,0 +1,17 @@
+{
+  "model_name": "cnn_model",
+  "model_path": "./Model/cnn_model.tflite",
+  "calibration_images": [
+    "./cal_Data/cal_1.npy",
+    "./cal_Data/cal_2.npy",
+    "./cal_Data/cal_3.npy",
+    "./cal_Data/cal_4.npy"
+  ],
+  "calibration_iterations": 15,
+  "tensor_bits": 16,
+  "artifacts_folder": "artifacts",
+  "mean": [0, 0, 0],
+  "scale": [0.003921568627, 0.003921568627, 0.003921568627],
+  "session_name": "tflitert",
+  "model_type": "classification"
+}
