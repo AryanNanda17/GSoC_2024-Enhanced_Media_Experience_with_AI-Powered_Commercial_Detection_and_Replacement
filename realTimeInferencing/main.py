@@ -21,6 +21,7 @@ def main():
     print(f'Total time taken for feature extraction is {feature_extraction_time:.2f} seconds')
     for start_frame, end_frame, label in prediction_ranges:
         print(f"Frames {start_frame} to {end_frame}: Label = {label}")
+    
     cap = cv2.VideoCapture(args.video_path)
     frame_count = 0
     current_label = None
@@ -45,6 +46,11 @@ def main():
                 if label_idx < len(prediction_ranges):
                     start_frame, end_frame, label = prediction_ranges[label_idx]
                     current_label = label
+        
+        if current_label == 1:
+            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            frame = cv2.cvtColor(frame, cv2.COLOR_GRAY2BGR)
+            frame[:, :] = 0  
         
         cv2.putText(frame, f'FPS: {fps}', (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
         if current_label is not None:
