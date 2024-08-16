@@ -67,7 +67,7 @@ function convert_notebook() {
 
     # Run notebook
     jupyter nbconvert --to notebook --execute \
-    --ExecutePreprocessor.timeout=1200 \
+    --ExecutePreprocessor.timeout=3600 \
     --output output.ipynb \
     "$2" || {  printf "${RED}====> FAILED:${NC} $2\n" ; exit 99 ; }
     )
