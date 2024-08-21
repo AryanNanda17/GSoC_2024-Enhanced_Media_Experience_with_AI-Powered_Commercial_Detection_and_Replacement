@@ -22,9 +22,9 @@ class FeatureExtractor:
         
         Loads the InceptionV3 model, the TFLite model, and PCA parameters.
         """
-        self.pca_mean_path = './pca/mean.npy'
-        self.pca_eigenvals_path = './pca/eigenvals.npy'
-        self.pca_eigenvecs_path = './pca/eigenvecs.npy'
+        self.pca_mean_path = '../pca/mean.npy'
+        self.pca_eigenvals_path = '../pca/eigenvals.npy'
+        self.pca_eigenvecs_path = '../pca/eigenvecs.npy'
         
         self.model = InceptionV3(weights='imagenet', include_top=False, pooling='avg')
         
