@@ -15,7 +15,7 @@ end_frame = 0
 
 def extract_features_from_frame(frame, model):
     img = cv2.resize(frame, (299, 299))
-    img = img[:, :, ::-1]  # BGR to RGB
+    img = img[:, :, ::-1]  
     x = image.img_to_array(img)
     x = np.expand_dims(x, axis=0)
     x = preprocess_input(x)
@@ -55,7 +55,7 @@ def evaluate_model(interpreter, X_test, threshold=0.5):
     predicted_label = (predicted_output >= threshold).astype(int)[0][0]
     return predicted_label
 
-def display_chunk_results(target_fps=35):
+def display_chunk_results(target_fps=40):
     frame_delay = 1 / target_fps  
     prev_time = time.time()
     frameCount = 0
@@ -65,7 +65,6 @@ def display_chunk_results(target_fps=35):
     while True:
         if not label_event.is_set():
             continue
-        
         if q.empty():
             break
         frameCount += 1
@@ -74,6 +73,10 @@ def display_chunk_results(target_fps=35):
             flag = 1
             end_frame1 = end_frame
         frame = q.get()
+        if current_label == 1:
+            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            frame = cv2.cvtColor(frame, cv2.COLOR_GRAY2BGR)
+            frame[:, :] = 0  
         current_time = time.time()
         elapsed_time = current_time - prev_time
         sleep_time = frame_delay - elapsed_time
@@ -94,13 +97,12 @@ def process_video(args):
     model = InceptionV3(weights='imagenet', include_top=False, pooling='avg')
     interpreter = tf.lite.Interpreter(model_path=args.model_path)
     interpreter.allocate_tensors()
-
     pca_mean_path = './pca/mean.npy'
     pca_eigenvals_path = './pca/eigenvals.npy'
     pca_eigenvecs_path = './pca/eigenvecs.npy'
     pca_mean, pca_eigenvals, pca_eigenvecs = load_pca(pca_mean_path, pca_eigenvals_path, pca_eigenvecs_path)
 
-    cap = cv2.VideoCapture(1)
+    cap = cv2.VideoCapture(args.video_path)
     chunk_size = 150
     frame_count = 0
     
@@ -116,9 +118,8 @@ def process_video(args):
             ret, frame = cap.read()
             if not ret:
                 break
-            
             q.put(frame)
-            
+            # print(q.qsize())
             if frame_count % interval_frames == 0:
                 features = extract_features_from_frame(frame, model)
                 frame_features_list.append(features)
@@ -147,12 +148,9 @@ def main():
     parser.add_argument('--model_path', type=str, required=True, help='Path to the TFLite model file')
     parser.add_argument('--video_path', type=str, required=True, help='Path to the video file')
     args = parser.parse_args()
-    
     thread = threading.Thread(target=process_video, args=(args,))
     thread.start()
-
     display_chunk_results()
-    
     thread.join()
 
 if __name__ == "__main__":
