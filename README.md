@@ -1,5 +1,14 @@
-# GSoC2024-Enhanced Media Experience with AI-Powered Commercial Detection and Replacement
+<p>
+<h1 align = "center" > <strong>Commercial Detection and Replacement</strong> <br></h1>
 
+<h3 align = "center">
+
+</p>
+:movie_camera: Detecting Commercials and Replacing them with alternate content :clapper:
+
+[BeagleBoard.org](https://www.beagleboard.org/) GSoC 2024<br></h3>
+
+<hr>
 <details>
 <summary>Table of Contents</summary>
 
@@ -12,13 +21,14 @@
 - [Commercial Detection Model](#commercial-detection-model)
 - [GStreamer](#gstreamer)
 - [Benefits of this Project](#benefits-of-this-project)
-- [Important Links](important-links)
+- [Important Links](#important-links)
 - [Contributors](#contributors)
 - [Mentors](#mentors)
 - [Acknowledgements](#acknowledgements)
 - [Contribution Guidelines](#contribution-guidelines)
 
 </details>
+<hr>
 
 ## Motivation behind the project
 
