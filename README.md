@@ -9,7 +9,7 @@
 - [File Structure](#file-structure)
 - [Connections](#connections)
 - [Why BeagleBone AI-64?](#why-beaglebone-ai-64?)
-- [Commercial Detection Model](commercial-detection-model)
+- [Commercial Detection Model](#commercial-detection-model)
 - [GStreamer](#gstreamer)
 - [Benefits of this Project](#benefits-of-this-project)
 - [Important Links](important-links)
@@ -79,13 +79,11 @@ BeagleBone® AI-64 brings a complete system for developing artificial intelligen
 │   │   ├── generateUniformFeatures.ipynb
 │   │   └── mergeAudioVisualFeatures.ipynb
 │   ├── inferencing
-│   │   ├── noci
 │   │   └── tflite_model_inferencing.ipynb
 │   └── model_training
 │       ├── all_models
 │       │   ├── CNNs_Model.ipynb
 │       │   ├── model_train.ipynb
-│       │   ├── noci
 │       │   └── visualFeaturesOnlyCNNsModel_train.ipynb
 │       └── model_train.ipynb
 ├── README.md
@@ -109,15 +107,12 @@ BeagleBone® AI-64 brings a complete system for developing artificial intelligen
 │   │   ├── config.json
 │   │   ├── edgeai-tidl-tools-08_02_00_05.Dockerfile
 │   │   ├── generateCaliData.ipynb
-│   │   └── noci
 │   └── inferencing
 │       ├── Model
 │       ├── artifacts_folder
 │       ├── environment.yml
 │       ├── inferencing
-│       │   ├── noci
 │       │   └── tflite_model_inferencing.ipynb
-│       ├── noci
 │       └── test_data
 ├── ci_env
 ├── environment.yml
@@ -179,7 +174,7 @@ In the project, I will create a GStreamer Plugin that will receive input from an
 - It offers valuable insights into deploying neural network models in resource-constrained environments, creating custom GStreamer plugins for multimedia processing, and applying machine learning in real-world scenarios to enhance digital media experiences.
 - Moreover, it enhances the viewing experience by automatically detecting and replacing commercials with preferred content, ensuring uninterrupted entertainment.
 
-##### Important Links:
+##### Important Links
 
 - Project Description and Discussion **[Link](https://forum.beagleboard.org/t/enhanced-media-experience-with-ai-powered-commercial-detection-and-replacement/37358)**
 - GSoC 2024 proposal **[Link](https://gsoc.beagleboard.io/proposals/commercial_detection_and_replacement.html)**
