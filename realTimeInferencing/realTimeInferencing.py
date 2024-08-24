@@ -1,5 +1,6 @@
 import argparse
 import cv2
+
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras.applications.inception_v3 import InceptionV3, preprocess_input
@@ -7,6 +8,10 @@ from tensorflow.keras.preprocessing import image
 import time
 import queue
 import threading
+# Music Setup
+import pygame
+pygame.mixer.init()
+pygame.mixer.music.load('./music/music.mp3')
 
 # Initialize queues for frames and predictions, and an event to signal when a label is available.
 q = queue.Queue()
@@ -120,19 +125,20 @@ def evaluate_model(interpreter, X_test, threshold=0.5):
     predicted_label = (predicted_output >= threshold).astype(int)[0][0]
     return predicted_label
 
-def display_chunk_results(target_fps=40):
+def display_chunk_results(target_fps=20):
     """
     Display the video frames with classification results.
 
     Parameters:
     - target_fps (int): The target frames per second for display. Default is 40.
     """
-    frame_delay = 1 / target_fps  # Calculate delay between frames
+    frame_delay = 1 / target_fps  
     prev_time = time.time()
     frameCount = 0
     flag = 0
     global end_frame
     end_frame1 = end_frame
+    fl = 0
     while True:
         if not label_event.is_set():
             continue
@@ -154,12 +160,19 @@ def display_chunk_results(target_fps=40):
         sleep_time = frame_delay - elapsed_time
         if current_label == 0:
             cv2.putText(frame, f'Label: Content', (frame.shape[1] - 250, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
+            if fl == 1:
+                fl = 0
+                pygame.mixer.music.stop()
         elif current_label == 1:
             text = 'Commercial'
             (text_width, text_height), _ = cv2.getTextSize(text, cv2.FONT_HERSHEY_SIMPLEX, 1, 2)
             x_position = (frame.shape[1] - text_width) // 2
             y_position = (frame.shape[0] + text_height) // 2
             cv2.putText(frame, text, (x_position, y_position), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
+            if fl == 0: 
+                pygame.mixer.music.play()
+                fl = 1
+
         cv2.imshow('Frame', frame)
         
         if sleep_time > 0:
