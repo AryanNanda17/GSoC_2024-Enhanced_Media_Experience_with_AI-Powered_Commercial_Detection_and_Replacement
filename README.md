@@ -66,7 +66,7 @@ Using BeagleBone AI-64 hardware is a key aspect of this project, offering severa
 
 - The BeagleBone AI-64 is powered by the Texas Instruments TDA4VM processor, which includes multiple high-performance Arm Cortex-A72 cores and Cortex-R5F cores. This provides significant processing power for running complex inferencing algorithms.
 - The TDA4VM processor integrates a dedicated deep learning accelerator (DLA), which significantly boosts the performance of AI inferencing tasks. It can accelerate the inferencing of deep learning models by offloading and parallelizing computation-intensive operations, thus reducing the time required for each inference.
-- The hardware’s architecture and support for various multimedia processing frameworks, such as GStreamer, make it an ideal choice for developing and running the proposed system efficiently.
+- The hardware’s architecture and support for various multimedia processing frameworks, such as GStreamer, OpenCV make it an ideal choice for developing and running the proposed system efficiently.
 
 <center>
 <img src="./assets/Comparison.png" width="700px" height="350px" />
