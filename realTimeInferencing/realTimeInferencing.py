@@ -152,7 +152,14 @@ def display_chunk_results(target_fps=40):
         current_time = time.time()
         elapsed_time = current_time - prev_time
         sleep_time = frame_delay - elapsed_time
-        cv2.putText(frame, f'Label: {current_label}', (frame.shape[1] - 200, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
+        if current_label == 0:
+            cv2.putText(frame, f'Label: Content', (frame.shape[1] - 250, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
+        elif current_label == 1:
+            text = 'Commercial'
+            (text_width, text_height), _ = cv2.getTextSize(text, cv2.FONT_HERSHEY_SIMPLEX, 1, 2)
+            x_position = (frame.shape[1] - text_width) // 2
+            y_position = (frame.shape[0] + text_height) // 2
+            cv2.putText(frame, text, (x_position, y_position), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
         cv2.imshow('Frame', frame)
         
         if sleep_time > 0:
