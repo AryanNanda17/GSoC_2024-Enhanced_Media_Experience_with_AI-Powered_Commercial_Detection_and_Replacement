@@ -1,3 +1,4 @@
+<center>
 <p>
 <h1 align = "center" > <strong>Commercial Detection and Replacement</strong> <br></h1>
 
@@ -8,6 +9,7 @@
 
 [BeagleBoard.org](https://www.beagleboard.org/) GSoC 2024<br></h3>
 
+</center>
 <hr>
 <details>
 <summary>Table of Contents</summary>
