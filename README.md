@@ -1,13 +1,12 @@
-<p>
-<h1 align = "center" > <strong>Commercial Detection and Replacement</strong> <br></h1>
+<div align="center">
+  <h1><strong>Commercial Detection and Replacement</strong></h1>
+  <h3>
+    :movie_camera: Detecting Commercials and Replacing them with alternate content :clapper:
+    <br>
+    [BeagleBoard.org - GSoC 2024](https://www.beagleboard.org/)
+  </h3>
+</div>
 
-<h3 align = "center">
-
-</p>
-:movie_camera: Detecting Commercials and Replacing them with alternate content :clapper:
-<center>
-[BeagleBoard.org - ](https://www.beagleboard.org/) GSoC 2024<br></h3>
-</center>
 <hr>
 <details>
 <summary>Table of Contents</summary>
