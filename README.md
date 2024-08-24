@@ -1,5 +1,21 @@
 # GSoC2024-Enhanced Media Experience with AI-Powered Commercial Detection and Replacement
 
+<details>
+<summary>Table of Contents</summary>
+
+- [Motivation behind the project](#motivation-behind-the-project)
+- [Project Goals](#project-goals)
+- [BeagleBone AI-64](#beaglebone-ai-64)
+- [File Structure](#file-structure)
+- [Connections](#connections)
+- [Why BeagleBone AI-64?](#why-beaglebone-ai-64?)
+- [Commercial Detection Model](commercial-detection-model)
+- [GStreamer](#gstreamer)
+- [Links](important)
+- [Benefits of this Project](#benefits-of-this-project)
+
+</details>
+
 ## Motivation behind the project
 
 The primary motivation behind this project is to enhance the media consumption experience by providing users with control over the content they see during commercial breaks. Advertisements can often be disruptive, irrelevant, or inappropriate for the viewing context.
@@ -43,6 +59,80 @@ The project has 3 main components:
 </center>
 BeagleBone® AI-64 brings a complete system for developing artificial intelligence (AI) and machine learning solutions with the convenience and expandability of the BeagleBone® platform and the peripherals on board to get started right away learning and building applications. The hardware supports real-time H.264 and H.265 (HEVC) video encoding and decoding. Typical performance metrics indicate the capability to handle 1080p streams at 60 frames per second (fps) or multiple 720p streams simultaneously.
 
+### File Structure 
+
+```
+.
+├── Dockerfile
+├── Model
+│   ├── datasetCollectionAndFeatureExtraction
+│   │   ├── README.md
+│   │   ├── yt8m_dataset_CommercialAndNonCommercial_FeatureExtraction
+│   │   │   └── yt8m_CommercialAndNonCommercial_FeatureExtraction.ipynb
+│   │   └── yt8m_explore
+│   │       └── Yt8m_explore.ipynb
+│   ├── datasetPreProcessing
+│   │   ├── generateUniformFeatures.ipynb
+│   │   └── mergeAudioVisualFeatures.ipynb
+│   ├── inferencing
+│   │   ├── noci
+│   │   └── tflite_model_inferencing.ipynb
+│   └── model_training
+│       ├── all_models
+│       │   ├── CNNs_Model.ipynb
+│       │   ├── model_train.ipynb
+│       │   ├── noci
+│       │   └── visualFeaturesOnlyCNNsModel_train.ipynb
+│       └── model_train.ipynb
+├── README.md
+├── assets
+│   ├── BBAi64_Connections.png
+│   ├── BegleBoneAi-64.png
+│   ├── Comparison.png
+│   └── scary.png
+├── bbai64
+│   ├── compilation_Python
+│   │   ├── Model
+│   │   ├── artifacts
+│   │   ├── cal_Data
+│   │   │   ├── cal_1.npy
+│   │   │   ├── cal_2.npy
+│   │   │   ├── cal_3.npy
+│   │   │   ├── cal_4.npy
+│   │   │   ├── cal_5.npy
+│   │   │   └── cal_6.npy
+│   │   ├── compile.py
+│   │   ├── config.json
+│   │   ├── edgeai-tidl-tools-08_02_00_05.Dockerfile
+│   │   ├── generateCaliData.ipynb
+│   │   └── noci
+│   └── inferencing
+│       ├── Model
+│       ├── artifacts_folder
+│       ├── environment.yml
+│       ├── inferencing
+│       │   ├── noci
+│       │   └── tflite_model_inferencing.ipynb
+│       ├── noci
+│       └── test_data
+├── ci_env
+├── environment.yml
+├── realTimeInferencing
+│   ├── Model
+│   ├── music
+│   │   └── music.mp3
+│   ├── pca
+│   │   ├── eigenvals.npy
+│   │   ├── eigenvecs.npy
+│   │   └── mean.npy
+│   ├── realTimeInferencing.py
+│   └── test
+│       ├── FeatureExtraction.py
+│       ├── Vggish
+│       ├── audiofeatureextraction.py
+│       └── staticCheck.py
+└── run_ci
+```
 ### Connections
 
 <center>
@@ -85,7 +175,7 @@ In the project, I will create a GStreamer Plugin that will receive input from an
 - It offers valuable insights into deploying neural network models in resource-constrained environments, creating custom GStreamer plugins for multimedia processing, and applying machine learning in real-world scenarios to enhance digital media experiences.
 - Moreover, it enhances the viewing experience by automatically detecting and replacing commercials with preferred content, ensuring uninterrupted entertainment.
 
-##### To Explore more about the project refer the following Links:
+##### Important Links:
 
 - Youtube Video **[Link](https://www.youtube.com/watch?v=Kagg8JycOfo)**
 - Project Details **[Link](https://forum.beagleboard.org/t/enhanced-media-experience-with-ai-powered-commercial-detection-and-replacement/37358)**
