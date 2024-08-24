@@ -1,4 +1,3 @@
-<center>
 <p>
 <h1 align = "center" > <strong>Commercial Detection and Replacement</strong> <br></h1>
 
@@ -6,9 +5,8 @@
 
 </p>
 :movie_camera: Detecting Commercials and Replacing them with alternate content :clapper:
-
-[BeagleBoard.org](https://www.beagleboard.org/) GSoC 2024<br></h3>
-
+<center>
+[BeagleBoard.org - ](https://www.beagleboard.org/) GSoC 2024<br></h3>
 </center>
 <hr>
 <details>
