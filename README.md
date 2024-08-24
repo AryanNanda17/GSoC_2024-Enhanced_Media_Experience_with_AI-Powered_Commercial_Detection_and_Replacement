@@ -11,8 +11,12 @@
 - [Why BeagleBone AI-64?](#why-beaglebone-ai-64?)
 - [Commercial Detection Model](commercial-detection-model)
 - [GStreamer](#gstreamer)
-- [Links](important)
 - [Benefits of this Project](#benefits-of-this-project)
+- [Important Links](important-links)
+- [Contributors](#contributors)
+- [Mentors](#mentors)
+- [Acknowledgements](#acknowledgements)
+- [Contribution Guidelines](#contribution-guidelines)
 
 </details>
 
@@ -177,8 +181,35 @@ In the project, I will create a GStreamer Plugin that will receive input from an
 
 ##### Important Links:
 
-- Youtube Video **[Link](https://www.youtube.com/watch?v=Kagg8JycOfo)**
-- Project Details **[Link](https://forum.beagleboard.org/t/enhanced-media-experience-with-ai-powered-commercial-detection-and-replacement/37358)**
+- Project Description and Discussion **[Link](https://forum.beagleboard.org/t/enhanced-media-experience-with-ai-powered-commercial-detection-and-replacement/37358)**
+- GSoC 2024 proposal **[Link](https://gsoc.beagleboard.io/proposals/commercial_detection_and_replacement.html)**
 - Gitlab Repo **[Link](https://openbeagle.org/aryan_nanda/gsoc_2024-enhanced_media_experience_with_ai-powered_commercial_detection_and_replacement)**
-- My proposal **[Link](https://gsoc.beagleboard.io/proposals/commercial_detection_and_replacement.html)**
+- Intro to Project Youtube Video **[Link](https://www.youtube.com/watch?v=Kagg8JycOfo)**
 - Blogs **[Link](https://aryannanda17.github.io/Blogs/)**
+
+## Contributors
+
+* [Aryan Nanda](https://openbeagle.org/aryan_nanda) - nandaaryan823@gmail.com  
+
+## Mentors
+
+- [Jason Kridner](https://openbeagle.org/jkridner) 
+- [Deepak Khatri](https://openbeagle.org/lorforlinux)
+- [Abhishek Kumar](https://theembeddedkitchen.net/personal-portfolio)
+
+## Acknowledgements 
+- [BeagleBoard.org](https://www.beagleboard.org/) 
+- [GSoC 2024](https://summerofcode.withgoogle.com/programs/2024)
+
+
+## Contribution Guidelines
+
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
