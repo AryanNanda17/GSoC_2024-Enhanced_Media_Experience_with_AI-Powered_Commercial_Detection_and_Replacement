@@ -3,7 +3,7 @@
   <h3>
     :movie_camera: Detecting Commercials and Replacing them with alternate content :clapper:
     <br>
-    [BeagleBoard.org - GSoC 2024](https://www.beagleboard.org/)
+    [BeagleBoard.org ](https://www.beagleboard.org/) - [GSoC 2024](https://summerofcode.withgoogle.com/programs/2024)
   </h3>
 </div>
 
