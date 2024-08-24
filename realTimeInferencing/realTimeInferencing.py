@@ -229,24 +229,19 @@ def process_video(args):
 
 def main():
     """
-    Main function to parse command-line arguments, start video processing and display results.
+        Main function to parse command-line arguments, start video processing and display results.
     """
     parser = argparse.ArgumentParser(description='Process a video and classify frames.')
     parser.add_argument('--model_path', type=str, required=True, help='Path to the TFLite model file')
-    parser.add_argument('--video_path', type=str, required=True, help='Path to the input video file')
+    parser.add_argument('--video_path', type=str, required=True, help='Path to the video file')
     args = parser.parse_args()
-
     # Start thread for video processing
-    t1 = threading.Thread(target=process_video, args=(args,))
-    t1.start()
-
-    # Start thread for displaying chunk results
-    t2 = threading.Thread(target=display_chunk_results)
-    t2.start()
-
-    # Wait for both threads to finish
-    t1.join()
-    t2.join()
+    thread = threading.Thread(target=process_video, args=(args,))
+    thread.start()
+    # Start displaying the video 
+    display_chunk_results()
+    # Wait for the thread to finish
+    thread.join()
 
 if __name__ == '__main__':
     main()
