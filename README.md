@@ -157,7 +157,7 @@ For the project, I'll develop an audio-visual CNN model that combines Mel-spectr
 - It offers valuable insights into deploying neural network models in resource-constrained environments, creating custom GStreamer plugins for multimedia processing, and applying machine learning in real-world scenarios to enhance digital media experiences.
 - Moreover, it enhances the viewing experience by automatically detecting and replacing commercials with preferred content, ensuring uninterrupted entertainment.
 
-##### Important Links
+## Important Links
 
 - Project Description and Discussion **[Link](https://forum.beagleboard.org/t/enhanced-media-experience-with-ai-powered-commercial-detection-and-replacement/37358)**
 - GSoC 2024 proposal **[Link](https://gsoc.beagleboard.io/proposals/commercial_detection_and_replacement.html)**
